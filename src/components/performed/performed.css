@@ -24,7 +24,7 @@
 
 .table-container {
     max-height: 200px;
-    /* Ajuste para se encaixar melhor no espaço disponível */
+
     overflow-y: auto;
 }
 
