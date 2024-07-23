@@ -1,0 +1,92 @@
+.main-container {
+
+    position: absolute;
+    width: 645px;
+    height: 301px;
+    left: 330px;
+    top: 108px;
+
+    background: #1C2025;
+    border-radius: 10px;
+
+
+}
+
+h1 {
+    margin-left: 22px;
+    margin-top: 22px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17px;
+
+    color: #FFFFFF;
+}
+
+.remuse-box {
+    width: 200px;
+    height: 200px;
+
+
+    margin-top: 40px;
+
+}
+
+
+.title-box {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+
+
+    color: #ffffff;
+}
+
+
+.resume {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+
+.resume-container {
+    display: flex;
+}
+
+.relatorio {
+    margin-bottom: 20px;
+}
+
+.relatorio h2 {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.relatorio p {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #A6B6D1;
+    margin: 5px 0;
+}
+
+.chart-container-vendas {
+    width: 600px;
+    height: 00px;
+    margin-top: 55px;
+    margin-left: 22px;
+}
+
+.chart-wrapper-vendas {
+    height: 200px;
+}

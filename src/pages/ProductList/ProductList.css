@@ -1,0 +1,66 @@
+.product-list {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    left: 21%;
+    top: 20%;
+    background: #1C2025;
+    padding: 20px;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.title-list {
+    position: absolute;
+    width: 395px;
+    height: 33px;
+    top: 30px;
+    left: 300px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 33px;
+
+    color: #FFFFFF;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #5554FE;
+}
+
+th {
+    background-color: #5554FE;
+    color: #FFFFFF;
+}
+
+tbody tr:hover {
+    background-color: #2D2F36;
+}
+
+
+
+.page-button:hover {
+    background-color: #f0f0f0;
+}
+
+.page-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-list {
+    margin-top: -350px;
+    margin-left: 48%;
+}

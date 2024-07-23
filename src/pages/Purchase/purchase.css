@@ -1,0 +1,70 @@
+/* src/pages/purchase/purchase.css */
+.purchase-container {
+    position: absolute;
+    width: 60%;
+    height: auto;
+    left: 19%;
+    top: 20%;
+    background: #1C2025;
+    padding: 20px;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.purchase-title {
+    position: absolute;
+    width: 395px;
+    height: 33px;
+    top: 30px;
+    left: 300px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 33px;
+}
+
+.purchase-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase-form-group {
+    margin-bottom: 15px;
+}
+
+.purchase-label {
+    font-family: 'Noto Sans';
+    font-weight: 600;
+    font-size: 14px;
+    color: #A6B6D1;
+    margin-bottom: 5px;
+}
+
+.purchase-input {
+    width: 98%;
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #5554FE;
+    background: #2D2F36;
+    color: #FFFFFF;
+}
+
+.purchase-btn-submit {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Noto Sans';
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.purchase-btn-submit:hover {
+    background-color: #0056b3;
+}
