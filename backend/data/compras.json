@@ -306,5 +306,29 @@
     "valorCompra": "222.00",
     "dataHora": "2024-07-22T20:17:23.864Z",
     "dataHoraCompra": "2024-07-22T20:17:23.868Z"
+  },
+  {
+    "id": 42,
+    "produtoId": "",
+    "quantidade": "1",
+    "valorCompra": "",
+    "dataHora": "2024-07-23T17:43:21.148Z",
+    "dataHoraCompra": "2024-07-23T17:43:21.166Z"
+  },
+  {
+    "id": 43,
+    "produtoId": "",
+    "quantidade": "2",
+    "valorCompra": "",
+    "dataHora": "2024-07-23T17:43:29.408Z",
+    "dataHoraCompra": "2024-07-23T17:43:29.412Z"
+  },
+  {
+    "id": 44,
+    "produtoId": "teste do teste",
+    "quantidade": "1",
+    "valorCompra": "",
+    "dataHora": "2024-07-23T17:55:01.920Z",
+    "dataHoraCompra": "2024-07-23T17:55:01.923Z"
   }
 ]

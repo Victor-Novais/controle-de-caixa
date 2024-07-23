@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Autosuggest from 'react-autosuggest';
+import { motion } from 'framer-motion';
 import './purchase.css';
 import api from '../../service/api';
 
@@ -12,6 +14,7 @@ const Purchase = () => {
     const [success, setSuccess] = useState('');
     const [produtoInfo, setProdutoInfo] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [suggestions, setSuggestions] = useState([]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,6 +22,36 @@ const Purchase = () => {
             ...purchaseData,
             [name]: value
         });
+    };
+
+    const onSuggestionsFetchRequested = async ({ value }) => {
+        try {
+            const response = await api.get(`/produtos/search`, { params: { q: value } });
+            setSuggestions(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar sugestões:', error);
+            setSuggestions([]);
+        }
+    };
+
+    const onSuggestionsClearRequested = () => {
+        setSuggestions([]);
+    };
+
+    const getSuggestionValue = (suggestion) => suggestion.nome;
+
+    const renderSuggestion = (suggestion) => (
+        <div>
+            {suggestion.nome}
+        </div>
+    );
+
+    const onSuggestionSelected = (event, { suggestion }) => {
+        setPurchaseData({
+            ...purchaseData,
+            produtoId: suggestion.id
+        });
+        fetchProdutoInfo(suggestion.id);
     };
 
     useEffect(() => {
@@ -87,57 +120,73 @@ const Purchase = () => {
     };
 
     return (
-        <>
+        <motion.div
+            className="purchase-container"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <h1 className="purchase-title">Efetuar Compra</h1>
-            <div className="purchase-container">
-                <form onSubmit={handleSubmit} className="purchase-form">
-                    <div className="purchase-form-group">
-                        <label className="purchase-label">Produto ID</label>
+            <form onSubmit={handleSubmit} className="purchase-form">
+                <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
+                    <label className="purchase-label">Produto</label>
+                    <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={{
+                            name: 'produtoId',
+                            value: purchaseData.produtoId,
+                            onChange: handleChange,
+                            className: 'purchase-input',
+                            required: true
+                        }}
+                        onSuggestionSelected={onSuggestionSelected}
+                    />
+                </motion.div>
+                <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
+                    <label className="purchase-label">Quantidade</label>
+                    <input
+                        type="number"
+                        name="quantidade"
+                        value={purchaseData.quantidade}
+                        onChange={handleChange}
+                        className="purchase-input"
+                        required
+                        min="1"
+                    />
+                </motion.div>
+                {isLoading && <p className="loading-message">Carregando informações do produto...</p>}
+                {produtoInfo && produtoInfo.valorVenda !== undefined && (
+                    <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
+                        <label className="purchase-label">Valor de Compra</label>
                         <input
                             type="text"
-                            name="produtoId"
-                            value={purchaseData.produtoId}
+                            name="valorCompra"
+                            value={`R$ ${purchaseData.valorCompra}`}
                             onChange={handleChange}
                             className="purchase-input"
-                            required
+                            readOnly
                         />
-                    </div>
-                    <div className="purchase-form-group">
-                        <label className="purchase-label">Quantidade</label>
-                        <input
-                            type="number"
-                            name="quantidade"
-                            value={purchaseData.quantidade}
-                            onChange={handleChange}
-                            className="purchase-input"
-                            required
-                            min="1"
-                        />
-                    </div>
-                    {isLoading && <p className="loading-message">Carregando informações do produto...</p>}
-                    {produtoInfo && produtoInfo.valorVenda !== undefined && (
-                        <div className="purchase-form-group">
-                            <label className="purchase-label">Valor de Compra</label>
-                            <input
-                                type="text"
-                                name="valorCompra"
-                                value={`R$ ${purchaseData.valorCompra}`}
-                                onChange={handleChange}
-                                className="purchase-input"
-                                readOnly
-                            />
-                            <p className="purchase-info">Valor unitário: R$ {produtoInfo.valorVenda.toFixed(2)}</p>
-                            <p className="purchase-info">Valor total: R$ {(parseFloat(purchaseData.valorCompra)).toFixed(2)}</p>
-                        </div>
-                    )}
-                    <button className="purchase-btn-submit" type="submit" disabled={isLoading}>
-                        {isLoading ? 'Processando...' : 'Comprar'}
-                    </button>
-                </form>
-                {error && <p className="error-message">{error}</p>}
-                {success && <p className="success-message">{success}</p>}
-            </div>
-        </>
+                        <p className="purchase-info">Valor unitário: R$ {produtoInfo.valorVenda.toFixed(2)}</p>
+                        <p className="purchase-info">Valor total: R$ {(parseFloat(purchaseData.valorCompra)).toFixed(2)}</p>
+                    </motion.div>
+                )}
+                <motion.button
+                    className="purchase-btn-submit"
+                    type="submit"
+                    disabled={isLoading}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    {isLoading ? 'Processando...' : 'Comprar'}
+                </motion.button>
+            </form>
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
+        </motion.div>
     );
 };
 
