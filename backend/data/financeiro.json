@@ -1,14 +1,14 @@
 {
   "orcamento": 10000,
   "gastos": 3836,
-  "saldoVendas": null,
+  "saldoVendas": 6299,
   "saldo": 8000,
   "melhorMesOrcamento": "Janeiro",
   "melhorMesRealizado": "Maio",
   "melhorMesSaldo": "Março",
   "vsOrcamentoAnoAnterior": "11.11%",
-  "vsRealizadoAnoAnterior": "NaN%",
+  "vsRealizadoAnoAnterior": "17.65%",
   "vsSaldoAnoAnterior": "5.26%",
   "totalExpenses": 3836,
-  "totalProfit": 0
+  "totalProfit": 5411
 }

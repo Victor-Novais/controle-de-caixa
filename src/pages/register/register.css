@@ -121,3 +121,128 @@ header {
         font-size: 14px;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.title-register,
+.register {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.title-register {
+    position: absolute;
+    width: 395px;
+    height: 33px;
+    top: 30px;
+    left: 300px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 33px;
+    color: #FFFFFF;
+}
+
+.register {
+    position: absolute;
+    width: 1084px;
+    height: auto;
+    left: 316px;
+    top: 100px;
+    background: #1C2025;
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-out;
+}
+
+
+.error-message-register,
+.success-message-register {
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.error-message {
+    background-color: #ff4d4f;
+}
+
+.success-message-register {
+    color: #fff;
+    background-color: #52c41a;
+}
+
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Noto Sans';
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+    .register {
+        width: 100%;
+        left: 0;
+        padding: 15px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .btn-submit {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+.alert-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.alert-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alert-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms, transform 300ms;
+}

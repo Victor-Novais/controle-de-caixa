@@ -147,7 +147,7 @@
     "cor": "preta",
     "valorCompra": 200,
     "valorVenda": 222,
-    "quantidadeEmEstoque": 3,
+    "quantidadeEmEstoque": 0,
     "marca": "jacare",
     "genero": "masculina",
     "fornecedor": "paulo",
@@ -194,5 +194,47 @@
     "genero": "111",
     "fornecedor": "1111",
     "dataHoraRegistro": "2024-07-22T20:17:12.825Z"
+  },
+  {
+    "id": 15,
+    "nome": "teste",
+    "categoria": "22",
+    "tamanho": "gg",
+    "cor": "222",
+    "valorCompra": 222,
+    "valorVenda": 22,
+    "quantidadeEmEstoque": 222,
+    "marca": "22",
+    "genero": "222",
+    "fornecedor": "222",
+    "dataHoraRegistro": "2024-07-23T18:27:21.425Z"
+  },
+  {
+    "id": 16,
+    "nome": "camisa-polo-gg",
+    "categoria": "camisa",
+    "tamanho": "gg",
+    "cor": "preta",
+    "valorCompra": 50,
+    "valorVenda": 100,
+    "quantidadeEmEstoque": 5,
+    "marca": "jacare",
+    "genero": "masculina",
+    "fornecedor": "paulo",
+    "dataHoraRegistro": "2024-07-23T18:43:41.718Z"
+  },
+  {
+    "id": 17,
+    "nome": "111111",
+    "categoria": "1111",
+    "tamanho": "1111",
+    "cor": "111",
+    "valorCompra": 111,
+    "valorVenda": 11,
+    "quantidadeEmEstoque": 110,
+    "marca": "11",
+    "genero": "111",
+    "fornecedor": "11",
+    "dataHoraRegistro": "2024-07-23T19:14:32.273Z"
   }
 ]

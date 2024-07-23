@@ -330,5 +330,29 @@
     "valorCompra": "",
     "dataHora": "2024-07-23T17:55:01.920Z",
     "dataHoraCompra": "2024-07-23T17:55:01.923Z"
+  },
+  {
+    "id": 45,
+    "produtoId": "16",
+    "quantidade": "2",
+    "valorCompra": "200.00",
+    "dataHora": "2024-07-23T18:44:04.996Z",
+    "dataHoraCompra": "2024-07-23T18:44:05.000Z"
+  },
+  {
+    "id": 46,
+    "produtoId": "17",
+    "quantidade": "1",
+    "valorCompra": "11.00",
+    "dataHora": "2024-07-23T19:15:01.515Z",
+    "dataHoraCompra": "2024-07-23T19:15:01.519Z"
+  },
+  {
+    "id": 47,
+    "produtoId": "11",
+    "quantidade": "2",
+    "valorCompra": "444.00",
+    "dataHora": "2024-07-23T19:21:00.000Z",
+    "dataHoraCompra": "2024-07-23T19:21:00.005Z"
   }
 ]
