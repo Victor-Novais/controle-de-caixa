@@ -27,7 +27,7 @@ export default function Main() {
         <>
             <div className="main">
                 <header>
-                    <h1 className="title">PERFORMANCE DE ORÇAMENTO</h1>
+                    <h1 className="title">DESEMPENHO DE ORÇAMENTO</h1>
                     <div className="infos-caixa">
                         <h1>Gasto: R$ {gastos.toFixed(2)}</h1>
                         <h1>Saldo de vendas: R$ {saldoVendas.toFixed(2)}</h1>

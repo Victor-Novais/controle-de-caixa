@@ -7,7 +7,7 @@ export default function Menu({ setCurrentPage }) {
             <div className="options">
                 <div className="option" onClick={() => setCurrentPage('main')}>
                     <FaTachometerAlt className="icon" size={20} />
-                    <h1>Performance</h1>
+                    <h1>Desempenho</h1>
                 </div>
                 <div className="option" onClick={() => setCurrentPage('register')}>
                     <FaRegEdit className="icon" size={20} />
