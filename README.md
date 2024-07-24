@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Controle de Caixa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Controle de Caixa é um aplicativo de desktop desenvolvido para gerenciar e monitorar as finanças de um negócio. O aplicativo permite registrar produtos, realizar compras, visualizar indicadores financeiros, e muito mais. É construído utilizando React para o frontend, Node.js com Express para o backend, e Electron para a integração do desktop.
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+### Menu Principal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O menu principal do aplicativo oferece diversas opções para facilitar a navegação e o gerenciamento das finanças. Abaixo estão as opções disponíveis e suas respectivas funcionalidades:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Dashboard**
+   - **Descrição:** Tela inicial do aplicativo que fornece uma visão geral das principais métricas e indicadores financeiros do negócio.
+   - **Funcionalidades:** 
+     - Exibe indicadores como saldo total, despesas totais, lucro total, entre outros.
+     - Gráficos e visualizações de dados financeiros.
 
-### `npm test`
+2. **Produtos**
+   - **Descrição:** Gerenciamento de produtos disponíveis para venda.
+   - **Funcionalidades:**
+     - Registrar novos produtos com informações detalhadas (nome, categoria, tamanho, cor, preço de compra, preço de venda, quantidade em estoque, marca, gênero e fornecedor).
+     - Listar.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Compras**
+   - **Descrição:** Registro e acompanhamento de compras realizadas.
+   - **Funcionalidades:**
+     - Registrar novas compras informando o produto, quantidade, e valor de compra.
+     - Visualizar histórico de compras realizadas.
+     - Atualizar estoque de produtos com base nas compras.
 
-### `npm run build`
+4. **Despesas**
+   - **Descrição:** Controle e visualização das despesas do negócio.
+   - **Funcionalidades:**
+     - Registrar novas despesas .
+     - Listar despesas registradas.
+     - Visualizar resumo das despesas .
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. **Relatórios**
+   - **Descrição:** Geração e visualização de relatórios financeiros detalhados.
+   - **Funcionalidades:**
+     - Gerar relatórios de vendas, compras, despesas e lucro.
+    
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. **Indicadores Financeiros**(para proximas atualizações)
+   - **Descrição:** Exibição detalhada de indicadores financeiros importantes.
+   - **Funcionalidades:**
+     - Visualizar métricas como saldo de vendas, melhor mês de orçamento, melhor mês realizado, e comparativos com o ano anterior.
+     - Análise gráfica de desempenho financeiro.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalação e Configuração
 
-### `npm run eject`
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Victor-Novais/controle-de-caixa.git
+   cd controle-de-caixa
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Instale as dependências do backend:
+   ```bash
+   cd backend
+   npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Instale as dependências do frontend:
+   ```bash\
+   cd ..
+   npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Estrutura do Projeto
 
-## Learn More
+- **api/**: Contém o backend da aplicação.
+  - **controllers/**: Controladores para manipulação de dados.
+  - **models/**: Modelos de dados.
+  - **routes/**: Definição das rotas da API.
+  - **utils/**: Funções utilitárias para operações com arquivos.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **public/**: Contém arquivos públicos do frontend.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **src/**: Contém o código fonte do frontend em React.
+  - **components/**: Componentes React utilizados na aplicação.
+  - **pages/**: Páginas principais da aplicação.
+  - **services/**: Serviços de API para comunicação com o backend.
 
-### Code Splitting
+## Contribuição
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sinta-se à vontade para contribuir com o projeto. Basta fazer um fork do repositório, criar um branch para sua funcionalidade ou correção, e abrir um pull request.
