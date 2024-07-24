@@ -1,8 +1,8 @@
 {
-  "gastos": 1000,
-  "totalExpenses": 1000,
-  "totalProfit": 2000,
-  "saldoVendas": 2400,
+  "gastos": 2200,
+  "totalExpenses": 2200,
+  "totalProfit": 2400,
+  "saldoVendas": 2800,
   "melhorMesOrcamento": "Janeiro",
   "melhorMesRealizado": "Julho",
   "melhorMesSaldo": "Março",

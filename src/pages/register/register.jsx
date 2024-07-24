@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../../service/api';
 import { CSSTransition } from 'react-transition-group';
+import InputMask from 'react-input-mask';
 import './register.css';
 
 export default function Register() {
@@ -32,12 +33,12 @@ export default function Register() {
 
         const dataToSend = {
             ...formData,
-            valorCompra: parseFloat(formData.valorCompra),
-            valorVenda: parseFloat(formData.valorVenda),
+            valorCompra: parseFloat(formData.valorCompra.replace(/[^0-9,-]+/g, '').replace(',', '.')),
+            valorVenda: parseFloat(formData.valorVenda.replace(/[^0-9,-]+/g, '').replace(',', '.')),
             quantidadeEmEstoque: parseInt(formData.quantidadeEmEstoque, 10)
         };
 
-        axios.post('http://localhost:5000/api/produtos', dataToSend)
+        api.post('/produtos', dataToSend)
             .then(response => {
                 console.log('Sucesso:', response.data);
                 setSuccess('Produto cadastrado com sucesso!');
@@ -67,11 +68,11 @@ export default function Register() {
             <h1 className='title-register'>CADASTRAR ROUPA</h1>
             <div className="register">
                 <form className="form" onSubmit={handleSubmit}>
-                    {['nome', 'categoria', 'tamanho', 'cor', 'valorCompra', 'valorVenda', 'quantidadeEmEstoque', 'marca', 'genero', 'fornecedor'].map((field) => (
+                    {['nome', 'categoria', 'tamanho', 'cor', 'quantidadeEmEstoque', 'marca', 'genero', 'fornecedor'].map((field) => (
                         <div className="form-group" key={field}>
                             <label>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
                             <input
-                                type={field.includes('valor') || field.includes('quantidade') ? 'number' : 'text'}
+                                type={field.includes('quantidade') ? 'number' : 'text'}
                                 name={field}
                                 value={formData[field]}
                                 onChange={handleChange}
@@ -79,6 +80,26 @@ export default function Register() {
                             />
                         </div>
                     ))}
+                    <div className="form-group">
+                        <label>Valor de Compra</label>
+                        <InputMask
+                            mask="R$ 999,99"
+                            value={formData.valorCompra}
+                            onChange={handleChange}
+                            name="valorCompra"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Valor de Venda</label>
+                        <InputMask
+                            mask="R$ 999,99"
+                            value={formData.valorVenda}
+                            onChange={handleChange}
+                            name="valorVenda"
+                            required
+                        />
+                    </div>
                     <button className="btn-submit" type="submit">Salvar</button>
                 </form>
                 <CSSTransition

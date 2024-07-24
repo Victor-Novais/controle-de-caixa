@@ -30,5 +30,13 @@
     "valorCompra": "400.00",
     "dataHora": "2024-07-24T01:21:16.655Z",
     "dataHoraCompra": "2024-07-24T01:21:16.668Z"
+  },
+  {
+    "id": 5,
+    "produtoId": "2",
+    "quantidade": "2",
+    "valorCompra": "400.00",
+    "dataHora": "2024-07-24T01:41:38.644Z",
+    "dataHoraCompra": "2024-07-24T01:41:38.648Z"
   }
 ]

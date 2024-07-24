@@ -12,5 +12,19 @@
     "genero": "masculina",
     "fornecedor": "paulo",
     "dataHoraRegistro": "2024-07-24T01:10:22.207Z"
+  },
+  {
+    "id": 2,
+    "nome": "camisa-polo",
+    "categoria": "camisa",
+    "tamanho": "gg",
+    "cor": "preta",
+    "valorCompra": 100,
+    "valorVenda": 200,
+    "quantidadeEmEstoque": 10,
+    "marca": "jacare",
+    "genero": "masculina",
+    "fornecedor": "paulo",
+    "dataHoraRegistro": "2024-07-24T01:41:25.450Z"
   }
 ]
