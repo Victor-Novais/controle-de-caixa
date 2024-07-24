@@ -4,23 +4,31 @@
     "produtoId": "1",
     "quantidade": "2",
     "valorCompra": "400.00",
-    "dataHora": "2024-07-24T00:55:35.204Z",
-    "dataHoraCompra": "2024-07-24T00:55:35.208Z"
+    "dataHora": "2024-07-24T01:10:45.745Z",
+    "dataHoraCompra": "2024-07-24T01:10:45.749Z"
   },
   {
     "id": 2,
     "produtoId": "1",
     "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-07-24T00:55:48.827Z",
-    "dataHoraCompra": "2024-07-24T00:55:48.830Z"
+    "valorCompra": "200.00",
+    "dataHora": "2024-07-24T01:13:49.759Z",
+    "dataHoraCompra": "2024-07-24T01:13:49.763Z"
   },
   {
     "id": 3,
     "produtoId": "1",
     "quantidade": "2",
     "valorCompra": "400.00",
-    "dataHora": "2024-07-24T00:55:55.916Z",
-    "dataHoraCompra": "2024-07-24T00:55:55.919Z"
+    "dataHora": "2024-07-24T01:19:25.710Z",
+    "dataHoraCompra": "2024-07-24T01:19:25.714Z"
+  },
+  {
+    "id": 4,
+    "produtoId": "1",
+    "quantidade": "2",
+    "valorCompra": "400.00",
+    "dataHora": "2024-07-24T01:21:16.655Z",
+    "dataHoraCompra": "2024-07-24T01:21:16.668Z"
   }
 ]

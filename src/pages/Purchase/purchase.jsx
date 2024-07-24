@@ -84,11 +84,16 @@ const Purchase = () => {
 
     const calculateValorCompra = (valorVenda, quantidade) => {
         if (valorVenda !== undefined && quantidade !== undefined) {
-            const valorCompra = valorVenda * quantidade;
-            setPurchaseData((prevData) => ({
-                ...prevData,
-                valorCompra: valorCompra.toFixed(2)
-            }));
+            const valorVendaNumerico = parseFloat(valorVenda);
+            const quantidadeNumerica = parseInt(quantidade, 10);
+
+            if (!isNaN(valorVendaNumerico) && !isNaN(quantidadeNumerica)) {
+                const valorTotalCompra = valorVendaNumerico * quantidadeNumerica;
+                setPurchaseData((prevData) => ({
+                    ...prevData,
+                    valorCompra: valorTotalCompra.toFixed(2)
+                }));
+            }
         }
     };
 
@@ -171,7 +176,7 @@ const Purchase = () => {
                             readOnly
                         />
                         <p className="purchase-info">Valor unitário: R$ {produtoInfo.valorVenda.toFixed(2)}</p>
-                        <p className="purchase-info">Valor total: R$ {(parseFloat(purchaseData.valorCompra)).toFixed(2)}</p>
+                        <p className="purchase-info">Valor total: R$ {purchaseData.valorCompra}</p>
                     </motion.div>
                 )}
                 <motion.button

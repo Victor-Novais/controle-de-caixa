@@ -21,12 +21,14 @@ const createCompra = (req, res) => {
     if (produtoIndex !== -1) {
         produtos[produtoIndex].quantidadeEmEstoque -= parseInt(req.body.quantidade);
         writeData(produtosPath, produtos);
-    }
 
-    const financeiro = getFinanceData(financePath);
-    const venda = parseFloat(req.body.valorCompra) * parseInt(req.body.quantidade);
-    financeiro.saldoVendas += venda;
-    updateFinanceData(financePath, financeiro);
+        const valorVendaUnitario = produtos[produtoIndex].valorVenda;
+        const valorTotalVenda = valorVendaUnitario * parseInt(req.body.quantidade);
+
+        const financeiro = getFinanceData(financePath);
+        financeiro.saldoVendas += valorTotalVenda;
+        updateFinanceData(financePath, financeiro);
+    }
 
     res.status(201).json(newPurchase);
 };

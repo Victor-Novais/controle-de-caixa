@@ -5,40 +5,12 @@
     "categoria": "camisa",
     "tamanho": "gg",
     "cor": "preta",
-    "valorCompra": 110,
-    "valorVenda": 200,
-    "quantidadeEmEstoque": 4,
-    "marca": "jacare",
-    "genero": "masculina",
-    "fornecedor": "paulo",
-    "dataHoraRegistro": "2024-07-24T00:55:23.433Z"
-  },
-  {
-    "id": 2,
-    "nome": "camisa-polo-mm",
-    "categoria": "camisa",
-    "tamanho": "gg",
-    "cor": "preta",
     "valorCompra": 100,
-    "valorVenda": 111,
-    "quantidadeEmEstoque": 5,
-    "marca": "1",
-    "genero": "11",
-    "fornecedor": "paulo",
-    "dataHoraRegistro": "2024-07-24T00:56:38.101Z"
-  },
-  {
-    "id": 3,
-    "nome": "11111",
-    "categoria": "1111",
-    "tamanho": "111",
-    "cor": "111",
-    "valorCompra": 200,
-    "valorVenda": 400,
-    "quantidadeEmEstoque": 1,
+    "valorVenda": 200,
+    "quantidadeEmEstoque": 2,
     "marca": "jacare",
     "genero": "masculina",
     "fornecedor": "paulo",
-    "dataHoraRegistro": "2024-07-24T00:57:12.084Z"
+    "dataHoraRegistro": "2024-07-24T01:10:22.207Z"
   }
 ]
