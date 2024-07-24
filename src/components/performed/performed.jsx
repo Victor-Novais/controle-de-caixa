@@ -8,19 +8,42 @@ export default function Performed() {
     const [itemsPerPage] = useState(4);
 
     useEffect(() => {
-        api.get('/produtos')
-            .then(response => {
+        const fetchProducts = async () => {
+            try {
+                const response = await api.get('/produtos');
                 const lowStockProducts = response.data.filter(product => product.quantidadeEmEstoque < 5);
                 setProducts(lowStockProducts);
-            })
-            .catch(error => console.error('Error:', error));
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchProducts();
     }, []);
+
+    useEffect(() => {
+        // Fetch new products whenever currentPage changes
+        const fetchProducts = async () => {
+            try {
+                const response = await api.get('/produtos');
+                const lowStockProducts = response.data.filter(product => product.quantidadeEmEstoque < 5);
+                setProducts(lowStockProducts);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchProducts();
+    }, [currentPage]);
 
     const indexOfLastProduct = currentPage * itemsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        setProducts([]);
+    };
 
     const totalPages = Math.ceil(products.length / itemsPerPage);
 

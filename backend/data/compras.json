@@ -3,40 +3,40 @@
     "id": 1,
     "produtoId": "1",
     "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-07-24T01:10:45.745Z",
-    "dataHoraCompra": "2024-07-24T01:10:45.749Z"
+    "valorCompra": "100.00",
+    "dataHora": "2024-03-24T19:49:08.017Z",
+    "dataHoraCompra": "2024-03-24T19:49:08.023Z"
   },
   {
     "id": 2,
     "produtoId": "1",
     "quantidade": "2",
-    "valorCompra": "200.00",
-    "dataHora": "2024-07-24T01:13:49.759Z",
-    "dataHoraCompra": "2024-07-24T01:13:49.763Z"
+    "valorCompra": "400.00",
+    "dataHora": "2024-04-24T19:49:08.017Z",
+    "dataHoraCompra": "2024-04-24T19:49:08.023Z"
   },
   {
     "id": 3,
     "produtoId": "1",
     "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-07-24T01:19:25.710Z",
-    "dataHoraCompra": "2024-07-24T01:19:25.714Z"
+    "valorCompra": "1000.00",
+    "dataHora": "2024-05-24T19:49:08.017Z",
+    "dataHoraCompra": "2024-05-24T19:49:08.023Z"
   },
   {
     "id": 4,
     "produtoId": "1",
     "quantidade": "2",
     "valorCompra": "400.00",
-    "dataHora": "2024-07-24T01:21:16.655Z",
-    "dataHoraCompra": "2024-07-24T01:21:16.668Z"
+    "dataHora": "2024-07-24T19:49:08.017Z",
+    "dataHoraCompra": "2024-07-24T19:49:08.023Z"
   },
   {
     "id": 5,
-    "produtoId": "2",
+    "produtoId": "1",
     "quantidade": "2",
     "valorCompra": "400.00",
-    "dataHora": "2024-07-24T01:41:38.644Z",
-    "dataHoraCompra": "2024-07-24T01:41:38.648Z"
+    "dataHora": "2024-06-24T19:49:08.017Z",
+    "dataHoraCompra": "2024-06-24T19:49:08.023Z"
   }
 ]

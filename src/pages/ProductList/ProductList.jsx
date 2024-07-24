@@ -15,6 +15,19 @@ export default function ProductList() {
             .catch(error => console.error('Error:', error));
     }, []);
 
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await api.get('/produtos');
+                setProducts(response.data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchProducts();
+    }, [currentPage]);
+
     const indexOfLastProduct = currentPage * itemsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -22,7 +35,11 @@ export default function ProductList() {
     const totalPages = Math.ceil(products.length / itemsPerPage);
     const totalPageGroups = Math.ceil(totalPages / 10);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        setProducts([]);
+    };
+
     const nextPageGroup = () => setPageGroup((prevGroup) => Math.min(prevGroup + 1, totalPageGroups - 1));
     const prevPageGroup = () => setPageGroup((prevGroup) => Math.max(prevGroup - 1, 0));
 
