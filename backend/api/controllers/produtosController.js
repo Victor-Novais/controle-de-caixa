@@ -1,9 +1,9 @@
-
 const path = require('path');
 const { readData, writeData } = require('../utils/fileOperations');
 
 const produtosFilePath = path.join(__dirname, '..', '..', 'data', 'produtos.json');
 const despesasFilePath = path.join(__dirname, '..', '..', 'data', 'despesas.json');
+const financeFilePath = path.join(__dirname, '..', '..', 'data', 'financeiro.json');
 
 const getAllProdutos = (req, res) => {
     try {
@@ -39,13 +39,21 @@ const createProduto = (req, res) => {
         writeData(produtosFilePath, produtos);
 
         const despesas = readData(despesasFilePath);
+        const valorDespesa = novoProduto.valorCompra * novoProduto.quantidadeEmEstoque;
         const novaDespesa = {
             descricao: `Compra de ${novoProduto.nome}`,
-            valor: novoProduto.precoCompra,
+            valor: valorDespesa,
             data: new Date().toISOString()
         };
         despesas.push(novaDespesa);
         writeData(despesasFilePath, despesas);
+
+
+        const financeiro = readData(financeFilePath);
+        financeiro.gastos = (financeiro.gastos || 0) + valorDespesa;
+        financeiro.totalExpenses = (financeiro.totalExpenses || 0) + valorDespesa;
+        financeiro.totalProfit = financeiro.saldoVendas - financeiro.totalExpenses;
+        writeData(financeFilePath, financeiro);
 
         res.status(201).json(novoProduto);
     } catch (error) {

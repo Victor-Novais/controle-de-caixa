@@ -1,43 +1,17 @@
 [
   {
-    "data": "2023-01-15",
-    "valor": 150
+    "descricao": "Compra de polo",
+    "valor": 1100,
+    "data": "2024-07-24T00:55:23.433Z"
   },
   {
-    "data": "2023-02-20",
-    "valor": 200
-  },
-  {
-    "descricao": "Compra de victor",
-    "valor": 123,
-    "data": "2024-07-21T13:14:27.899Z"
-  },
-  {
-    "descricao": "Compra de teste do teste",
-    "valor": 200,
-    "data": "2024-07-21T13:25:53.292Z"
-  },
-  {
-    "descricao": "Compra de victoraaaaaaaaa",
-    "valor": 111,
-    "data": "2024-07-21T17:26:17.398Z"
-  },
-  {
-    "descricao": "Compra de 1",
-    "valor": 111,
-    "data": "2024-07-21T17:45:23.983Z"
+    "descricao": "Compra de camisa-polo-mm",
+    "valor": 500,
+    "data": "2024-07-24T00:56:38.101Z"
   },
   {
     "descricao": "Compra de 11111",
-    "valor": 111,
-    "data": "2024-07-22T20:17:12.826Z"
-  },
-  {
-    "descricao": "Compra de camisa-polo-gg",
-    "data": "2024-07-23T18:43:41.719Z"
-  },
-  {
-    "descricao": "Compra de 111111",
-    "data": "2024-07-23T19:14:32.274Z"
+    "valor": 200,
+    "data": "2024-07-24T00:57:12.085Z"
   }
 ]
