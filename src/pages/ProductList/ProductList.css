@@ -82,5 +82,5 @@ tbody tr:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -200px;
+    margin-top: -10px;
 }
