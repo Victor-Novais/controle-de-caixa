@@ -1,198 +1,231 @@
-import React, { useState, useEffect } from 'react';
-import Autosuggest from 'react-autosuggest';
-import { motion } from 'framer-motion';
-import './purchase.css';
-import api from '../../service/api';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import "./purchase.css";
+import api from "../../service/api";
 
 const Purchase = () => {
-    const [purchaseData, setPurchaseData] = useState({
-        produtoId: '',
-        quantidade: '',
-        valorCompra: ''
+  const [products, setProducts] = useState([]);
+  const [purchaseList, setPurchaseList] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState({
+    nome: "",
+    quantidade: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Fetch products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get("/produtos");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+        setError("Erro ao carregar produtos. Tente novamente mais tarde.");
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCurrentProduct({
+      ...currentProduct,
+      [name]: value,
     });
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [produtoInfo, setProdutoInfo] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [suggestions, setSuggestions] = useState([]);
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setPurchaseData({
-            ...purchaseData,
-            [name]: value
-        });
-    };
+  // Add product to the purchase list
+  const addProductToList = () => {
+    setError("");
+    setSuccess("");
 
-    const onSuggestionsFetchRequested = async ({ value }) => {
-        try {
-            const response = await api.get(`/produtos/search`, { params: { q: value } });
-            setSuggestions(response.data);
-        } catch (error) {
-            console.error('Erro ao buscar sugestões:', error);
-            setSuggestions([]);
-        }
-    };
+    if (!currentProduct.nome.trim()) {
+      setError("O nome do produto não pode estar vazio.");
+      return;
+    }
 
-    const onSuggestionsClearRequested = () => {
-        setSuggestions([]);
-    };
+    if (!currentProduct.quantidade || currentProduct.quantidade <= 0) {
+      setError("A quantidade deve ser maior que zero.");
+      return;
+    }
 
-    const getSuggestionValue = (suggestion) => suggestion.nome;
-
-    const renderSuggestion = (suggestion) => (
-        <div>
-            {suggestion.nome}
-        </div>
+    const selectedProduct = products.find(
+      (p) => p.nome.toLowerCase() === currentProduct.nome.toLowerCase()
     );
 
-    const onSuggestionSelected = (event, { suggestion }) => {
-        setPurchaseData({
-            ...purchaseData,
-            produtoId: suggestion.id
-        });
-        fetchProdutoInfo(suggestion.id);
-    };
+    if (!selectedProduct) {
+      setError("Produto não encontrado. Verifique o nome e tente novamente.");
+      return;
+    }
 
-    useEffect(() => {
-        if (purchaseData.produtoId) {
-            fetchProdutoInfo(purchaseData.produtoId);
-        }
-    }, [purchaseData.produtoId]);
+    setPurchaseList((prevList) => [
+      ...prevList,
+      {
+        ...selectedProduct,
+        quantidade: parseInt(currentProduct.quantidade, 10),
+      },
+    ]);
 
-    useEffect(() => {
-        if (produtoInfo && purchaseData.quantidade) {
-            calculateValorCompra(produtoInfo.valorVenda, purchaseData.quantidade);
-        }
-    }, [produtoInfo, purchaseData.quantidade]);
+    setCurrentProduct({ nome: "", quantidade: "" });
+  };
 
-    const fetchProdutoInfo = async (produtoId) => {
-        try {
-            setIsLoading(true);
-            const response = await api.get(`/produtos/${produtoId}`);
-            const produto = response.data;
-            setProdutoInfo(produto);
-            setIsLoading(false);
-            setError('');
-        } catch (error) {
-            console.error('Erro ao buscar informações do produto:', error);
-            setError('Produto não encontrado ou erro ao buscar informações.');
-            setProdutoInfo(null);
-            setIsLoading(false);
-        }
-    };
+  // Calculate the total value of the purchase
+  const calculateTotalValue = () => {
+    return purchaseList
+      .reduce((total, product) => {
+        return total + product.valorVenda * product.quantidade;
+      }, 0)
+      .toFixed(2); // Resultado com duas casas decimais
+  };
 
-    const calculateValorCompra = (valorVenda, quantidade) => {
-        if (valorVenda !== undefined && quantidade !== undefined) {
-            const valorVendaNumerico = parseFloat(valorVenda);
-            const quantidadeNumerica = parseInt(quantidade, 10);
+  // Submit purchase
+  const handleSubmit = async () => {
+    if (purchaseList.length === 0) {
+      setError("Adicione pelo menos um produto à lista.");
+      return;
+    }
 
-            if (!isNaN(valorVendaNumerico) && !isNaN(quantidadeNumerica)) {
-                const valorTotalCompra = valorVendaNumerico * quantidadeNumerica;
-                setPurchaseData((prevData) => ({
-                    ...prevData,
-                    valorCompra: valorTotalCompra.toFixed(2)
-                }));
-            }
-        }
-    };
+    setIsLoading(true);
+    setError("");
+    setSuccess("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        setSuccess('');
-        setIsLoading(true);
+    // Prepare payload for API
+    const payload = purchaseList.map((product, index) => ({
+      id: index + 1,
+      produtoId: product.id,
+      quantidade: product.quantidade.toString(),
+      dataHoraCompra: new Date().toISOString(),
+    }));
 
-        try {
-            const response = await api.post('/compras', {
-                ...purchaseData,
-                dataHora: new Date().toISOString()
-            });
-            setSuccess('Compra realizada com sucesso!');
-            setPurchaseData({
-                produtoId: '',
-                quantidade: '',
-                valorCompra: ''
-            });
-            setProdutoInfo(null);
-            console.log('Success:', response.data);
-        } catch (error) {
-            setError('Erro ao efetuar a compra. Verifique os dados e tente novamente.');
-            console.error('Error:', error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    try {
+      const response = await api.post("/compras", payload);
+      if (response && response.status === 201) {
+        setSuccess("Compra realizada com sucesso!");
+        setPurchaseList([]); // Limpar a lista após a compra
+      } else {
+        setError(
+          "Erro ao efetuar a compra. Verifique os dados e tente novamente."
+        );
+      }
+    } catch (error) {
+      console.error("Erro:", error); // Logar o erro completo
+      if (error.response) {
+        // Se houver resposta do servidor (erro HTTP)
+        console.error("Erro na resposta:", error.response);
+        setError(
+          `Erro HTTP: ${error.response.status} - ${error.response.data}`
+        );
+      } else if (error.request) {
+        // Se a requisição foi feita mas não houve resposta
+        console.error("Erro na requisição:", error.request);
+        setError("Erro na requisição. Tente novamente mais tarde.");
+      } else {
+        // Qualquer outro erro (configuração ou erro desconhecido)
+        console.error("Erro desconhecido:", error.message);
+        setError("Erro desconhecido. Tente novamente mais tarde.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    return (
+  return (
+    <motion.div
+      className="purchase-container"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h1 className="purchase-title">Efetuar Compra</h1>
+      <div className="purchase-form">
+        {/* Nome do Produto */}
         <motion.div
-            className="purchase-container"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+          className="purchase-form-group"
+          whileHover={{ scale: 1.05 }}
         >
-            <h1 className="purchase-title">Efetuar Compra</h1>
-            <form onSubmit={handleSubmit} className="purchase-form">
-                <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
-                    <label className="purchase-label">Produto</label>
-                    <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={onSuggestionsClearRequested}
-                        getSuggestionValue={getSuggestionValue}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={{
-                            name: 'produtoId',
-                            value: purchaseData.produtoId,
-                            onChange: handleChange,
-                            className: 'purchase-input',
-                            required: true
-                        }}
-                        onSuggestionSelected={onSuggestionSelected}
-                    />
-                </motion.div>
-                <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
-                    <label className="purchase-label">Quantidade</label>
-                    <input
-                        type="number"
-                        name="quantidade"
-                        value={purchaseData.quantidade}
-                        onChange={handleChange}
-                        className="purchase-input"
-                        required
-                        min="1"
-                    />
-                </motion.div>
-                {isLoading && <p className="loading-message">Carregando informações do produto...</p>}
-                {produtoInfo && produtoInfo.valorVenda !== undefined && (
-                    <motion.div className="purchase-form-group" whileHover={{ scale: 1.05 }}>
-                        <label className="purchase-label">Valor de Compra</label>
-                        <input
-                            type="text"
-                            name="valorCompra"
-                            value={`R$ ${purchaseData.valorCompra}`}
-                            onChange={handleChange}
-                            className="purchase-input"
-                            readOnly
-                        />
-                        <p className="purchase-info">Valor unitário: R$ {produtoInfo.valorVenda.toFixed(2)}</p>
-                        <p className="purchase-info">Valor total: R$ {purchaseData.valorCompra}</p>
-                    </motion.div>
-                )}
-                <motion.button
-                    className="purchase-btn-submit"
-                    type="submit"
-                    disabled={isLoading}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    {isLoading ? 'Processando...' : 'Comprar'}
-                </motion.button>
-            </form>
-            {error && <p className="error-message">{error}</p>}
-            {success && <p className="success-message">{success}</p>}
+          <label className="purchase-label">Nome do Produto</label>
+          <input
+            type="text"
+            name="nome"
+            value={currentProduct.nome}
+            onChange={handleChange}
+            className="purchase-input"
+            placeholder="Digite o nome do produto"
+          />
         </motion.div>
-    );
+
+        {/* Quantidade */}
+        <motion.div
+          className="purchase-form-group"
+          whileHover={{ scale: 1.05 }}
+        >
+          <label className="purchase-label">Quantidade</label>
+          <input
+            type="number"
+            name="quantidade"
+            value={currentProduct.quantidade}
+            onChange={handleChange}
+            className="purchase-input"
+            min="1"
+          />
+        </motion.div>
+
+        {/* Botão para adicionar produto */}
+        <motion.button
+          type="button"
+          onClick={addProductToList}
+          className="purchase-btn-add"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Adicionar Produto
+        </motion.button>
+
+        {/* Lista de produtos adicionados */}
+        <ul className="purchase-list">
+          {purchaseList.map((product, index) => (
+            <li key={index} className="purchase-item">
+              <img
+                className="produto-imagem"
+                src={`http://localhost:5000${product.imagem}`}
+                alt={product.nome}
+              />
+              <div>
+                <p>{product.nome}</p>
+                <p>Qtd: {product.quantidade}</p>
+                <p>R$ {(product.valorVenda * product.quantidade).toFixed(2)}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {/* Valor total da compra */}
+        <div className="purchase-total">
+          <p>
+            <strong>Valor Total: R$ {calculateTotalValue()}</strong>
+          </p>
+        </div>
+
+        {/* Botão para finalizar compra */}
+        <motion.button
+          className="purchase-btn-submit"
+          onClick={handleSubmit}
+          disabled={isLoading}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isLoading ? "Processando..." : "Finalizar Compra"}
+        </motion.button>
+      </div>
+
+      {/* Mensagens de erro e sucesso */}
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">{success}</p>}
+    </motion.div>
+  );
 };
 
 export default Purchase;

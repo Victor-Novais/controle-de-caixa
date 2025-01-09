@@ -1,248 +1,256 @@
 .title-register {
+  position: absolute;
+  width: 395px;
+  height: 33px;
+  top: 30px;
+  left: 300px;
 
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 33px;
 
-    position: absolute;
-    width: 395px;
-    height: 33px;
-    top: 30px;
-    left: 300px;
-
-
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 33px;
-
-    color: #FFFFFF;
-
+  color: #ffffff;
+}
+.image-preview {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 150px; /* Define um tamanho máximo para largura */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 4px;
+  background-color: #1c2025; /* Fundo da pré-visualização */
+  border: 1px solid #5554fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita que imagens maiores escapem */
 }
 
-
+.image-preview img {
+  width: 100%; /* Adapta a largura ao contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: cover; /* Garante preenchimento sem distorções */
+  border-radius: 4px;
+}
 .register {
-    position: absolute;
-    width: 1084px;
-    height: auto;
-    left: 19%;
-    top: 20%;
-    background: #1C2025;
-    padding: 20px;
-    border-radius: 10px;
-
+  position: absolute;
+  width: 1084px;
+  height: auto;
+  left: 19%;
+  top: 20%;
+  background: #1c2025;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    height: 115px;
+  display: flex;
+  align-items: center;
+  height: 115px;
 }
 
 .title {
-    width: 395px;
-    height: 33px;
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 33px;
-    color: #FFFFFF;
-    margin: auto;
+  width: 395px;
+  height: 33px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 33px;
+  color: #ffffff;
+  margin: auto;
 }
 
-
 .form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .form-group {
-    width: 48%;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
+  width: 48%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    font-family: 'Noto Sans';
-    font-weight: 600;
-    font-size: 11px;
-    color: #A6B6D1;
-    margin-bottom: 5px;
+  font-family: "Noto Sans";
+  font-weight: 600;
+  font-size: 11px;
+  color: #a6b6d1;
+  margin-bottom: 5px;
 }
 
 .form-group input,
 .form-group textarea {
-    width: 98%;
-    padding: 10px;
-    font-family: 'Noto Sans';
-    font-size: 15px;
-    color: #FFFFFF;
-    background-color: #2D2F36;
-    border: 1px solid #5554FE;
-    border-radius: 4px;
+  width: 98%;
+  padding: 10px;
+  font-family: "Noto Sans";
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #2d2f36;
+  border: 1px solid #5554fe;
+  border-radius: 4px;
 }
 
 .form-group textarea {
-    resize: vertical;
-    height: 80px;
+  resize: vertical;
+  height: 80px;
 }
 
 .btn-submit {
-    width: 100%;
-    padding: 10px;
-    font-family: 'Noto Sans';
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 10px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .btn-submit:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .register {
-        width: 100%;
-        left: 0;
-        padding: 15px;
-    }
+  .register {
+    width: 100%;
+    left: 0;
+    padding: 15px;
+  }
 
-    .form-group {
-        width: 100%;
-    }
+  .form-group {
+    width: 100%;
+  }
 
-    .btn-submit {
-        padding: 8px;
-        font-size: 14px;
-    }
+  .btn-submit {
+    padding: 8px;
+    font-size: 14px;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 
 .title-register,
 .register {
-    animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .title-register {
-    position: absolute;
-    width: 395px;
-    height: 33px;
-    top: 30px;
-    left: 300px;
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 33px;
-    color: #FFFFFF;
+  position: absolute;
+  width: 395px;
+  height: 33px;
+  top: 30px;
+  left: 300px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 33px;
+  color: #ffffff;
 }
 
 .register {
-    position: absolute;
-    width: 1084px;
-    height: auto;
-    left: 21%;
-    top: 19%;
-    background: #1C2025;
-    padding: 20px;
-    border-radius: 10px;
-    animation: fadeIn 1s ease-out;
+  position: absolute;
+  width: 1084px;
+  height: auto;
+  left: 21%;
+  top: 19%;
+  background: #1c2025;
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 1s ease-out;
 }
-
 
 .error-message-register,
 .success-message-register {
-    text-align: center;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 10px;
-    animation: fadeIn 0.5s ease-out;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .error-message {
-    background-color: #ff4d4f;
+  background-color: #ff4d4f;
 }
 
 .success-message-register {
-    color: #fff;
-    background-color: #52c41a;
+  color: #fff;
+  background-color: #52c41a;
 }
 
-
 .btn-submit {
-    width: 100%;
-    padding: 10px;
-    font-family: 'Noto Sans';
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  padding: 10px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-submit:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-
 @media (max-width: 768px) {
-    .register {
-        width: 100%;
-        left: 0;
-        padding: 15px;
-    }
+  .register {
+    width: 100%;
+    left: 0;
+    padding: 15px;
+  }
 
-    .form-group {
-        width: 100%;
-    }
+  .form-group {
+    width: 100%;
+  }
 
-    .btn-submit {
-        padding: 8px;
-        font-size: 14px;
-    }
+  .btn-submit {
+    padding: 8px;
+    font-size: 14px;
+  }
 }
 
 .alert-enter {
-    opacity: 0;
-    transform: translateY(-20px);
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 .alert-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
 }
 
 .alert-exit {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .alert-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 300ms, transform 300ms;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }

@@ -1,42 +1,9 @@
 [
   {
     "id": 1,
-    "produtoId": "1",
+    "produtoId": 1,
     "quantidade": "2",
-    "valorCompra": "100.00",
-    "dataHora": "2024-03-24T19:49:08.017Z",
-    "dataHoraCompra": "2024-03-24T19:49:08.023Z"
-  },
-  {
-    "id": 2,
-    "produtoId": "1",
-    "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-04-24T19:49:08.017Z",
-    "dataHoraCompra": "2024-04-24T19:49:08.023Z"
-  },
-  {
-    "id": 3,
-    "produtoId": "1",
-    "quantidade": "2",
-    "valorCompra": "1000.00",
-    "dataHora": "2024-05-24T19:49:08.017Z",
-    "dataHoraCompra": "2024-05-24T19:49:08.023Z"
-  },
-  {
-    "id": 4,
-    "produtoId": "1",
-    "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-07-24T19:49:08.017Z",
-    "dataHoraCompra": "2024-07-24T19:49:08.023Z"
-  },
-  {
-    "id": 5,
-    "produtoId": "1",
-    "quantidade": "2",
-    "valorCompra": "400.00",
-    "dataHora": "2024-06-24T19:49:08.017Z",
-    "dataHoraCompra": "2024-06-24T19:49:08.023Z"
+    "dataHoraCompra": "2025-01-09T14:03:16.707Z",
+    "valorTotal": "800.00"
   }
 ]

@@ -1,22 +1,26 @@
-const fs = require('fs');
-
+const fs = require("fs");
 
 const readData = (filePath) => {
-    try {
-        const data = fs.readFileSync(filePath, 'utf-8');
-        return JSON.parse(data);
-    } catch (err) {
-        console.error('Erro ao ler o arquivo de dados:', err);
-        return [];
+  try {
+    const data = fs.readFileSync(filePath, "utf-8");
+    if (!data) {
+      console.error("O arquivo está vazio.");
+      return [];
     }
+    return JSON.parse(data);
+  } catch (err) {
+    console.error(`Erro ao ler o arquivo ${filePath}:`, err);
+    return [];
+  }
 };
 
 const writeData = (filePath, data) => {
-    try {
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    } catch (err) {
-        console.error('Erro ao escrever no arquivo de dados:', err);
-    }
+  try {
+    const validData = Array.isArray(data) ? data : [];
+    fs.writeFileSync(filePath, JSON.stringify(validData, null, 2));
+  } catch (err) {
+    console.error(`Erro ao escrever no arquivo ${filePath}:`, err);
+  }
 };
 
 module.exports = { readData, writeData };
