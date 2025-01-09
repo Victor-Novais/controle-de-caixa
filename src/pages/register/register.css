@@ -16,21 +16,21 @@
 .image-preview {
   margin-top: 10px;
   width: 100%;
-  max-width: 150px; /* Define um tamanho máximo para largura */
-  height: auto; /* Mantém a proporção da imagem */
+  max-width: 150px;
+  height: auto;
   border-radius: 4px;
-  background-color: #1c2025; /* Fundo da pré-visualização */
+  background-color: #1c2025;
   border: 1px solid #5554fe;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Evita que imagens maiores escapem */
+  overflow: hidden;
 }
 
 .image-preview img {
-  width: 100%; /* Adapta a largura ao contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-  object-fit: cover; /* Garante preenchimento sem distorções */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 4px;
 }
 .register {

@@ -146,9 +146,9 @@
 }
 .purchase-item {
   list-style: none;
-  font-family: "Poppins", sans-serif; /* Fonte moderna e clean */
-  font-size: 14px; /* Tamanho base */
-  line-height: 1.6; /* Melhor espaçamento entre linhas */
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
   color: #d3d3d3;
   text-align: center;
   margin-top: 10px;
@@ -164,8 +164,8 @@
 
   margin-top: 20px;
   font-family: "Poppins", sans-serif;
-  font-size: 16px; /* Tamanho base */
-  line-height: 1.6; /* Melhor espaçamento entre linhas */
+  font-size: 16px;
+  line-height: 1.6;
   color: #d3d3d3;
 
   margin-top: 10px;
@@ -185,27 +185,27 @@
 
 .purchase-btn-add {
   display: inline-block;
-  background-color: #4caf50; /* Verde elegante */
-  color: white; /* Cor do texto */
-  font-size: 16px; /* Tamanho da fonte */
-  font-weight: bold; /* Texto em negrito */
-  padding: 10px 20px; /* Espaçamento interno */
-  border: none; /* Remove bordas */
-  border-radius: 8px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de mãozinha */
-  transition: all 0.3s ease; /* Animação de hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .purchase-btn-add:hover {
-  background-color: #45a049; /* Tom de verde mais escuro ao passar o mouse */
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra */
-  transform: translateY(-2px); /* Efeito de flutuação */
+  background-color: #45a049;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .purchase-btn-add:active {
-  background-color: #3e8e41; /* Tom mais escuro ao clicar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra mais curta */
+  background-color: #3e8e41;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transform: translateY(1px);
 }
 @media (max-width: 768px) {

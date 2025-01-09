@@ -28,7 +28,6 @@ const Purchase = () => {
     fetchProducts();
   }, []);
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCurrentProduct({
@@ -37,7 +36,6 @@ const Purchase = () => {
     });
   };
 
-  // Add product to the purchase list
   const addProductToList = () => {
     setError("");
     setSuccess("");
@@ -72,16 +70,14 @@ const Purchase = () => {
     setCurrentProduct({ nome: "", quantidade: "" });
   };
 
-  // Calculate the total value of the purchase
   const calculateTotalValue = () => {
     return purchaseList
       .reduce((total, product) => {
         return total + product.valorVenda * product.quantidade;
       }, 0)
-      .toFixed(2); // Resultado com duas casas decimais
+      .toFixed(2);
   };
 
-  // Submit purchase
   const handleSubmit = async () => {
     if (purchaseList.length === 0) {
       setError("Adicione pelo menos um produto à lista.");
@@ -92,7 +88,6 @@ const Purchase = () => {
     setError("");
     setSuccess("");
 
-    // Prepare payload for API
     const payload = purchaseList.map((product, index) => ({
       id: index + 1,
       produtoId: product.id,
@@ -104,26 +99,23 @@ const Purchase = () => {
       const response = await api.post("/compras", payload);
       if (response && response.status === 201) {
         setSuccess("Compra realizada com sucesso!");
-        setPurchaseList([]); // Limpar a lista após a compra
+        setPurchaseList([]);
       } else {
         setError(
           "Erro ao efetuar a compra. Verifique os dados e tente novamente."
         );
       }
     } catch (error) {
-      console.error("Erro:", error); // Logar o erro completo
+      console.error("Erro:", error);
       if (error.response) {
-        // Se houver resposta do servidor (erro HTTP)
         console.error("Erro na resposta:", error.response);
         setError(
           `Erro HTTP: ${error.response.status} - ${error.response.data}`
         );
       } else if (error.request) {
-        // Se a requisição foi feita mas não houve resposta
         console.error("Erro na requisição:", error.request);
         setError("Erro na requisição. Tente novamente mais tarde.");
       } else {
-        // Qualquer outro erro (configuração ou erro desconhecido)
         console.error("Erro desconhecido:", error.message);
         setError("Erro desconhecido. Tente novamente mais tarde.");
       }
@@ -141,7 +133,6 @@ const Purchase = () => {
     >
       <h1 className="purchase-title">Efetuar Compra</h1>
       <div className="purchase-form">
-        {/* Nome do Produto */}
         <motion.div
           className="purchase-form-group"
           whileHover={{ scale: 1.05 }}
@@ -157,7 +148,6 @@ const Purchase = () => {
           />
         </motion.div>
 
-        {/* Quantidade */}
         <motion.div
           className="purchase-form-group"
           whileHover={{ scale: 1.05 }}
@@ -173,7 +163,6 @@ const Purchase = () => {
           />
         </motion.div>
 
-        {/* Botão para adicionar produto */}
         <motion.button
           type="button"
           onClick={addProductToList}
@@ -184,7 +173,6 @@ const Purchase = () => {
           Adicionar Produto
         </motion.button>
 
-        {/* Lista de produtos adicionados */}
         <ul className="purchase-list">
           {purchaseList.map((product, index) => (
             <li key={index} className="purchase-item">
@@ -202,14 +190,12 @@ const Purchase = () => {
           ))}
         </ul>
 
-        {/* Valor total da compra */}
         <div className="purchase-total">
           <p>
             <strong>Valor Total: R$ {calculateTotalValue()}</strong>
           </p>
         </div>
 
-        {/* Botão para finalizar compra */}
         <motion.button
           className="purchase-btn-submit"
           onClick={handleSubmit}
@@ -221,7 +207,6 @@ const Purchase = () => {
         </motion.button>
       </div>
 
-      {/* Mensagens de erro e sucesso */}
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">{success}</p>}
     </motion.div>

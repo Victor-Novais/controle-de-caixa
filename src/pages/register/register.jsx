@@ -47,23 +47,20 @@ export default function Register() {
 
     const data = new FormData();
 
-    // Adiciona os campos do formulário ao FormData
     Object.keys(formData).forEach((key) => {
       if (key === "valorCompra" || key === "valorVenda") {
-        data.append(key, parseFloat(formData[key]) || 0); // Converte para float
+        data.append(key, parseFloat(formData[key]) || 0);
       } else if (key === "quantidadeEmEstoque") {
-        data.append(key, parseInt(formData[key], 10) || 0); // Converte para inteiro
+        data.append(key, parseInt(formData[key], 10) || 0);
       } else {
         data.append(key, formData[key] || "");
       }
     });
 
-    // Adiciona a imagem ao FormData, se existir
     if (image) {
       data.append("imagem", image);
     }
 
-    // Debug: Mostra os dados que estão sendo enviados
     console.log("Dados enviados:", Object.fromEntries(data.entries()));
 
     try {

@@ -1,7 +1,17 @@
 [
   {
-    "valor": 800,
-    "descricao": "Compra de mouse-gamer",
-    "data": "2025-01-09T14:02:51.194Z"
+    "valor": 750,
+    "descricao": "Compra de mouse-zopin",
+    "data": "2025-01-09T20:26:21.865Z"
+  },
+  {
+    "valor": 2000,
+    "descricao": "Compra de teclado mecanico",
+    "data": "2025-01-09T20:27:25.396Z"
+  },
+  {
+    "valor": 1200,
+    "descricao": "Compra de teclado mecanico",
+    "data": "2025-01-09T20:29:53.835Z"
   }
 ]

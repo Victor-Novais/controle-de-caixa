@@ -1,17 +1,47 @@
 [
   {
     "id": 1,
-    "nome": "mouse-gamer",
+    "nome": "mouse-zopin",
     "categoria": "mouse",
     "tamanho": "m",
     "cor": "laranja",
-    "valorCompra": 200,
+    "valorCompra": 250,
     "valorVenda": 400,
-    "quantidadeEmEstoque": 2,
+    "quantidadeEmEstoque": 3,
     "marca": "opi",
     "genero": "tec",
     "fornecedor": "eu",
-    "dataHoraRegistro": "2025-01-09T14:02:51.193Z",
-    "imagem": "/uploads/1736431371191-596543150-1.webp"
+    "dataHoraRegistro": "2025-01-09T20:26:21.864Z",
+    "imagem": "/uploads/1736454381862-718310479-1.webp"
+  },
+  {
+    "id": 2,
+    "nome": "teclado mecanico",
+    "categoria": "teclado",
+    "tamanho": "m",
+    "cor": "preta",
+    "valorCompra": 400,
+    "valorVenda": 690.99,
+    "quantidadeEmEstoque": 1,
+    "marca": "opi",
+    "genero": "tec",
+    "fornecedor": "eu",
+    "dataHoraRegistro": "2025-01-09T20:27:25.395Z",
+    "imagem": "/uploads/1736454445392-212355241-1733609536223.png"
+  },
+  {
+    "id": 3,
+    "nome": "teclado mecanico",
+    "categoria": "teclado",
+    "tamanho": "m",
+    "cor": "branco",
+    "valorCompra": 200,
+    "valorVenda": 350.9,
+    "quantidadeEmEstoque": 6,
+    "marca": "opi",
+    "genero": "tec",
+    "fornecedor": "eu",
+    "dataHoraRegistro": "2025-01-09T20:29:53.835Z",
+    "imagem": "/uploads/1736454593833-531586413-1733609537156.png"
   }
 ]

@@ -82,61 +82,47 @@ const createCompra = (req, res) => {
 const getLucroTotal = (req, res) => {
   try {
     const purchases = readData(purchasesPath);
-    const produtos = readData(produtosPath);
 
-    let lucroTotal = 0;
+    const valorTotalCompras = purchases.reduce((total, compra) => {
+      return total + parseFloat(compra.valorTotal);
+    }, 0);
 
-    purchases.forEach((compra) => {
-      const produto = produtos.find((p) => p.id === compra.produtoId);
-      if (produto) {
-        const custoTotal = produto.valorCompra * compra.quantidade;
-        const receitaTotal = parseFloat(compra.valorTotal);
-        lucroTotal += receitaTotal - custoTotal;
-      }
-    });
-
-    res.status(200).json({ lucroTotal: lucroTotal.toFixed(2) });
+    res.status(200).json({ valorTotalCompras: valorTotalCompras.toFixed(2) });
   } catch (error) {
-    console.error("Erro ao calcular lucro total:", error.message);
-    res.status(500).json({ error: "Erro ao calcular lucro total." });
+    console.error("Erro ao calcular valor total das compras:", error.message);
+    res
+      .status(500)
+      .json({ error: "Erro ao calcular valor total das compras." });
   }
 };
 const getLucroPorPeriodo = (req, res) => {
   try {
     const purchases = readData(purchasesPath);
-    const produtos = readData(produtosPath);
 
-    const lucroPorPeriodo = {};
+    const valorPorPeriodo = {};
 
     purchases.forEach((compra) => {
-      const produto = produtos.find((p) => p.id === compra.produtoId);
-      if (produto) {
-        const custoTotal = produto.valorCompra * compra.quantidade;
-        const receitaTotal = parseFloat(compra.valorTotal);
-        const lucro = receitaTotal - custoTotal;
+      const periodo = new Date(compra.dataHoraCompra).toISOString().slice(0, 7);
 
-        const periodo = new Date(compra.dataHoraCompra)
-          .toISOString()
-          .slice(0, 7);
-
-        if (!lucroPorPeriodo[periodo]) {
-          lucroPorPeriodo[periodo] = 0;
-        }
-        lucroPorPeriodo[periodo] += lucro;
+      if (!valorPorPeriodo[periodo]) {
+        valorPorPeriodo[periodo] = 0;
       }
+      valorPorPeriodo[periodo] += parseFloat(compra.valorTotal);
     });
 
-    const response = Object.entries(lucroPorPeriodo).map(
-      ([periodo, lucro]) => ({
+    const response = Object.entries(valorPorPeriodo).map(
+      ([periodo, valor]) => ({
         periodo,
-        lucro: lucro.toFixed(2),
+        valorTotal: valor.toFixed(2),
       })
     );
 
     res.status(200).json(response);
   } catch (error) {
-    console.error("Erro ao calcular lucro por período:", error.message);
-    res.status(500).json({ error: "Erro ao calcular lucro por período." });
+    console.error("Erro ao calcular valor total por período:", error.message);
+    res
+      .status(500)
+      .json({ error: "Erro ao calcular valor total por período." });
   }
 };
 

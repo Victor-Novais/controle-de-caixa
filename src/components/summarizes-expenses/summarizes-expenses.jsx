@@ -53,7 +53,7 @@ const SummarizesExpenses = () => {
       try {
         const lucroResponse = await api.get("/compras/lucro-periodo");
         const totalLucro = lucroResponse.data.reduce(
-          (acc, item) => acc + item.lucro,
+          (acc, item) => acc + item.valorTotal,
           0
         );
 

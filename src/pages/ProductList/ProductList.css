@@ -1,4 +1,3 @@
-/* Container Geral */
 .geral {
   position: relative;
   width: 80%;
@@ -9,7 +8,6 @@
   border-radius: 10px;
 }
 
-/* Lista de Produtos */
 .product-list {
   position: relative;
   width: 80%;
@@ -22,7 +20,6 @@
   padding: 20px;
 }
 
-/* Título da Lista */
 .title-list {
   font-family: "Noto Sans", sans-serif;
   font-weight: 400;
@@ -31,14 +28,12 @@
   color: #ffffff;
 }
 
-/* Grid de Produtos */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   gap: 20px;
 }
 
-/* Card de Produto */
 .product-card {
   background-color: #2d2f36;
   border: 1px solid #5554fe;
@@ -74,7 +69,6 @@
   gap: 20px;
 }
 
-/* Paginação */
 .pagination-list {
   margin-top: -10px;
   display: flex;
@@ -108,7 +102,6 @@
   cursor: not-allowed;
 }
 
-/* Loading e Erro */
 .loading,
 .error {
   text-align: center;
@@ -119,51 +112,51 @@
 
 .delete-button {
   padding: 10px 15px;
-  background-color: #ff4d4f; /* Vermelho chamativo */
-  color: #ffffff; /* Texto branco para contraste */
-  border: none; /* Sem bordas */
-  border-radius: 5px; /* Borda arredondada */
+  background-color: #ff4d4f;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombras sutis */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .delete-button:hover {
-  background-color: #e63946; /* Vermelho mais escuro ao passar o mouse */
-  transform: translateY(-2px); /* Elevação ao passar o mouse */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Aumento da sombra */
+  background-color: #e63946;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .delete-button:active {
-  transform: scale(0.95); /* Redução ao clicar */
+  transform: scale(0.95);
 }
 
 .delete-button:disabled {
-  background-color: #cccccc; /* Cinza para botões desativados */
+  background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
   box-shadow: none;
 }
 .product-details {
-  font-family: "Poppins", sans-serif; /* Fonte moderna e clean */
-  font-size: 14px; /* Tamanho base */
-  line-height: 1.6; /* Melhor espaçamento entre linhas */
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
   color: #d3d3d3;
   text-align: center;
   margin-top: 10px;
 }
 
 .product-details h3 {
-  font-size: 18px; /* Destaque para o nome do produto */
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #ffffff; /* Nome do produto em branco para destaque */
+  color: #ffffff;
 }
 
 .product-details p {
-  margin: 4px 0; /* Espaçamento entre os parágrafos */
-  color: #b0b0b0; /* Cor secundária para os detalhes */
+  margin: 4px 0;
+  color: #b0b0b0;
 }

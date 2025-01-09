@@ -157,6 +157,21 @@ const getLowStockProdutos = (req, res) => {
   }
 };
 
+const getDespesasTotais = (req, res) => {
+  try {
+    const despesas = readData(despesasFilePath);
+
+    const despesasTotais = despesas.reduce((total, despesa) => {
+      return total + parseFloat(despesa.valor || 0);
+    }, 0);
+
+    res.status(200).json({ despesasTotais: despesasTotais.toFixed(2) });
+  } catch (error) {
+    console.error("Erro ao obter despesas totais:", error.message);
+    res.status(500).json({ message: "Erro ao obter despesas totais.", error });
+  }
+};
+
 module.exports = {
   getAllProdutos,
   getProdutoById,
@@ -164,4 +179,5 @@ module.exports = {
   updateProduto,
   deleteProduto,
   getLowStockProdutos,
+  getDespesasTotais,
 };

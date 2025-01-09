@@ -1,9 +1,16 @@
 [
   {
     "id": 1,
-    "produtoId": 1,
+    "produtoId": 2,
     "quantidade": "2",
-    "dataHoraCompra": "2025-01-09T14:03:16.707Z",
-    "valorTotal": "800.00"
+    "dataHoraCompra": "2025-01-09T20:30:18.549Z",
+    "valorTotal": "1381.98"
+  },
+  {
+    "id": 2,
+    "produtoId": 2,
+    "quantidade": "2",
+    "dataHoraCompra": "2025-01-09T20:41:19.372Z",
+    "valorTotal": "1381.98"
   }
 ]

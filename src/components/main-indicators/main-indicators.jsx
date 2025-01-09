@@ -43,23 +43,30 @@ const MainIndicators = () => {
   }
 
   const formatarData = (data) => {
-    const options = { year: "numeric", month: "long" };
-    return new Date(data).toLocaleDateString("pt-BR", options);
-  };
-
-  const formatarValor = (valor) => {
-    return valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    const [year, month] = data.split("-");
+    const meses = [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ];
+    return `${meses[parseInt(month, 10) - 1]} de ${year}`;
   };
 
   const periodoData = {
     labels: lucroPorPeriodo.map((item) => formatarData(item.periodo)),
     datasets: [
       {
-        label: "Lucro por Período",
-        data: lucroPorPeriodo.map((item) => item.lucro),
+        label: "Valor de Vendas",
+        data: lucroPorPeriodo.map((item) => parseFloat(item.valorTotal)), // Usando `valorTotal`
         backgroundColor: "#228B22",
       },
     ],
@@ -79,7 +86,7 @@ const MainIndicators = () => {
 
   return (
     <div className="main-container">
-      <h1>LUCRO AO LONGO DO TEMPO</h1>
+      <h1>VALOR DE VENDAS AO LONGO DO TEMPO</h1>
       <div className="chart-container-vendas">
         <div className="chart-wrapper-vendas">
           <Bar data={periodoData} options={options} />
