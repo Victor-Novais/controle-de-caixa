@@ -11,7 +11,7 @@
     "marca": "opi",
     "genero": "tec",
     "fornecedor": "eu",
-    "dataHoraRegistro": "2025-01-09T20:26:21.864Z",
+    "dataHoraRegistro": "2024-01-15T10:30:18.549Z",
     "imagem": "/uploads/1736454381862-718310479-1.webp"
   },
   {
@@ -22,26 +22,26 @@
     "cor": "preta",
     "valorCompra": 400,
     "valorVenda": 690.99,
-    "quantidadeEmEstoque": 1,
+    "quantidadeEmEstoque": 2,
     "marca": "opi",
     "genero": "tec",
     "fornecedor": "eu",
-    "dataHoraRegistro": "2025-01-09T20:27:25.395Z",
+    "dataHoraRegistro": "2024-07-19T09:30:22.806Z",
     "imagem": "/uploads/1736454445392-212355241-1733609536223.png"
   },
   {
     "id": 3,
-    "nome": "teclado mecanico",
+    "nome": "teclado mecanico branco",
     "categoria": "teclado",
     "tamanho": "m",
     "cor": "branco",
     "valorCompra": 200,
     "valorVenda": 350.9,
-    "quantidadeEmEstoque": 6,
+    "quantidadeEmEstoque": 10,
     "marca": "opi",
     "genero": "tec",
     "fornecedor": "eu",
-    "dataHoraRegistro": "2025-01-09T20:29:53.835Z",
+    "dataHoraRegistro": "2024-03-10T16:15:19.372Z",
     "imagem": "/uploads/1736454593833-531586413-1733609537156.png"
   }
 ]

@@ -1,42 +1,35 @@
 .main {
-
-
-    position: absolute;
-    width: 1064px;
-    height: 715px;
-    left: 316px;
-    top: 15px;
-
-
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 316px;
+  top: 15px;
 }
 
 header {
-    display: flex;
-    align-content: center;
-    height: 115px;
-
+  display: flex;
+  align-content: center;
+  height: 115px;
 }
 
 .title {
+  position: absolute;
+  width: 395px;
+  height: 33px;
+  top: 30px;
+  left: 10px;
 
-    position: absolute;
-    width: 395px;
-    height: 33px;
-    top: 30px;
-    left: 10px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 33px;
 
-
-    font-family: 'Noto Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 33px;
-
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .infos-caixa {
-    position: absolute;
-    top: -6px;
-    left: 670px;
+  position: absolute;
+  top: -6px;
+  left: 670px;
 }

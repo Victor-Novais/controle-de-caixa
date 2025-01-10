@@ -1,11 +1,13 @@
 .geral {
-  position: relative;
-  width: 80%;
-  max-width: 1200px;
-  margin: 50px auto;
-  color: #ffffff;
-  top: -100vh;
+  position: absolute;
+  width: 70%;
+  height: auto;
+  left: 19%;
+  top: 1%;
+  padding: 20px;
   border-radius: 10px;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-list {
@@ -15,7 +17,7 @@
   height: 60 0px;
   margin: 50px auto;
   color: #ffffff;
-  margin-top: -10px;
+  margin-top: 60px;
   border-radius: 10px;
   padding: 20px;
 }

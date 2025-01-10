@@ -2,15 +2,64 @@
   {
     "id": 1,
     "produtoId": 2,
-    "quantidade": "2",
-    "dataHoraCompra": "2025-01-09T20:30:18.549Z",
-    "valorTotal": "1381.98"
+    "quantidade": 2,
+    "dataHoraCompra": "2024-01-15T10:30:18.549Z",
+    "valorTotal": 1381.98
   },
   {
     "id": 2,
+    "produtoId": 1,
+    "quantidade": 5,
+    "dataHoraCompra": "2024-02-20T14:00:18.549Z",
+    "valorTotal": 2000
+  },
+  {
+    "id": 3,
+    "produtoId": 3,
+    "quantidade": 4,
+    "dataHoraCompra": "2024-03-10T16:15:19.372Z",
+    "valorTotal": 1403.6
+  },
+  {
+    "id": 4,
+    "produtoId": 1,
+    "quantidade": 3,
+    "dataHoraCompra": "2024-05-07T11:47:46.806Z",
+    "valorTotal": 1200
+  },
+  {
+    "id": 5,
+    "produtoId": 2,
+    "quantidade": 6,
+    "dataHoraCompra": "2024-07-19T09:30:22.806Z",
+    "valorTotal": 4145.94
+  },
+  {
+    "id": 6,
+    "produtoId": 1,
+    "quantidade": "2",
+    "dataHoraCompra": "2025-01-10T02:15:31.099Z",
+    "valorTotal": "800.00"
+  },
+  {
+    "id": 7,
     "produtoId": 2,
     "quantidade": "2",
-    "dataHoraCompra": "2025-01-09T20:41:19.372Z",
+    "dataHoraCompra": "2025-01-10T02:15:31.099Z",
     "valorTotal": "1381.98"
+  },
+  {
+    "id": 8,
+    "produtoId": 1,
+    "quantidade": "2",
+    "dataHoraCompra": "2025-01-10T13:19:02.888Z",
+    "valorTotal": "800.00"
+  },
+  {
+    "id": 9,
+    "produtoId": 2,
+    "quantidade": "1",
+    "dataHoraCompra": "2025-01-10T13:19:02.888Z",
+    "valorTotal": "690.99"
   }
 ]

@@ -51,11 +51,8 @@ const SummarizesExpenses = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const lucroResponse = await api.get("/compras/lucro-periodo");
-        const totalLucro = lucroResponse.data.reduce(
-          (acc, item) => acc + item.valorTotal,
-          0
-        );
+        const lucroResponse = await api.get("/compras/lucro-total");
+        const totalLucro = parseFloat(lucroResponse.data.valorTotalCompras);
 
         const despesasResponse = await api.get(
           "/financeiro/expenses-by-period"

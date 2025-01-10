@@ -125,14 +125,11 @@ const Purchase = () => {
   };
 
   return (
-    <motion.div
-      className="purchase-container"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="purchase-container">
       <h1 className="purchase-title">Efetuar Compra</h1>
+
       <div className="purchase-form">
+        {/* Campo de nome do produto */}
         <motion.div
           className="purchase-form-group"
           whileHover={{ scale: 1.05 }}
@@ -148,6 +145,7 @@ const Purchase = () => {
           />
         </motion.div>
 
+        {/* Campo de quantidade */}
         <motion.div
           className="purchase-form-group"
           whileHover={{ scale: 1.05 }}
@@ -163,6 +161,7 @@ const Purchase = () => {
           />
         </motion.div>
 
+        {/* Botão de adicionar produto */}
         <motion.button
           type="button"
           onClick={addProductToList}
@@ -172,44 +171,44 @@ const Purchase = () => {
         >
           Adicionar Produto
         </motion.button>
-
-        <ul className="purchase-list">
-          {purchaseList.map((product, index) => (
-            <li key={index} className="purchase-item">
-              <img
-                className="produto-imagem"
-                src={`http://localhost:5000${product.imagem}`}
-                alt={product.nome}
-              />
-              <div>
-                <p>{product.nome}</p>
-                <p>Qtd: {product.quantidade}</p>
-                <p>R$ {(product.valorVenda * product.quantidade).toFixed(2)}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        <div className="purchase-total">
-          <p>
-            <strong>Valor Total: R$ {calculateTotalValue()}</strong>
-          </p>
-        </div>
-
-        <motion.button
-          className="purchase-btn-submit"
-          onClick={handleSubmit}
-          disabled={isLoading}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {isLoading ? "Processando..." : "Finalizar Compra"}
-        </motion.button>
       </div>
 
+      {/* Lista de produtos */}
+      <ul className="purchase-list">
+        {purchaseList.map((product, index) => (
+          <li key={index} className="purchase-item">
+            <img
+              className="produto-imagem"
+              src={`http://localhost:5000${product.imagem}`}
+              alt={product.nome}
+            />
+            <div>
+              <p>{product.nome}</p>
+              <p>Qtd: {product.quantidade}</p>
+              <p>R$ {(product.valorVenda * product.quantidade).toFixed(2)}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {/* Total e botão de compra */}
+      <div className="purchase-total">
+        <p>Valor Total: R$ {calculateTotalValue()}</p>
+      </div>
+      <motion.button
+        className="purchase-btn-submit"
+        onClick={handleSubmit}
+        disabled={isLoading}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {isLoading ? "Processando..." : "Finalizar Compra"}
+      </motion.button>
+
+      {/* Mensagens de erro ou sucesso */}
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">{success}</p>}
-    </motion.div>
+    </div>
   );
 };
 
