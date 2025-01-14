@@ -9,6 +9,8 @@ const {
   deleteProduto,
   getLowStockProdutos,
   getDespesasTotais,
+  renovarEstoque,
+  updateProdutoVenda,
 } = require("../controllers/produtosController");
 
 router.get("/despesasTotais", getDespesasTotais);
@@ -19,5 +21,6 @@ router.get("/:id", getProdutoById);
 router.post("/", upload.single("imagem"), createProduto);
 router.put("/:id", upload.single("imagem"), updateProduto);
 router.delete("/:id", deleteProduto);
-
+router.put("/:id/promocao", updateProdutoVenda);
+router.put("/:id/renovar-estoque", renovarEstoque);
 module.exports = router;

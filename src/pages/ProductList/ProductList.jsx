@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Modal from "../../components/modal-add/modal-add"; // Importando o modal
 import "./ProductList.css";
 import api from "../../service/api";
 
@@ -9,6 +10,9 @@ export default function ProductList() {
   const [itemsPerPage] = useState(9);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalType, setModalType] = useState(""); // 'promotion' ou 'restock'
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -33,6 +37,28 @@ export default function ProductList() {
       setAllProducts((prev) => prev.filter((product) => product.id !== id));
     } catch (err) {
       alert("Erro ao deletar o produto.");
+    }
+  };
+
+  const handleOpenModal = (product, type) => {
+    setSelectedProduct(product);
+    setModalType(type);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setModalType("");
+    setShowModal(false);
+  };
+
+  const handleModalSubmit = async (updatedData) => {
+    try {
+      await api.put(`/produtos/${selectedProduct.id}`, updatedData);
+      fetchProducts(); // Atualiza a lista de produtos
+      handleCloseModal();
+    } catch (err) {
+      alert("Erro ao atualizar o produto.");
     }
   };
 
@@ -111,6 +137,18 @@ export default function ProductList() {
                 <p>Quantidade: {product.quantidadeEmEstoque}</p>
                 <p>Preço: R$ {product.valorVenda.toFixed(2)}</p>
                 <button
+                  onClick={() => handleOpenModal(product, "promotion")}
+                  className="promotion-button"
+                >
+                  Promoção
+                </button>
+                <button
+                  onClick={() => handleOpenModal(product, "restock")}
+                  className="restock-button"
+                >
+                  Renovar Estoque
+                </button>
+                <button
                   onClick={() => deleteProduct(product.id)}
                   className="delete-button"
                 >
@@ -146,6 +184,15 @@ export default function ProductList() {
             Próximo
           </motion.button>
         </div>
+      )}
+
+      {showModal && (
+        <Modal
+          type={modalType}
+          product={selectedProduct}
+          onClose={handleCloseModal}
+          onSubmit={handleModalSubmit}
+        />
       )}
     </div>
   );

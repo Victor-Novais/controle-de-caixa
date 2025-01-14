@@ -107,11 +107,17 @@ const updateProduto = (req, res) => {
       return res.status(404).json({ message: "Produto não encontrado" });
     }
 
-    const { body, file } = req;
+    const { valorVenda } = req.body;
+
+    if (valorVenda && parseFloat(valorVenda) < 0) {
+      return res
+        .status(400)
+        .json({ message: "O valor de venda deve ser maior ou igual a 0." });
+    }
+
     const produtoAtualizado = {
       ...produtos[index],
-      ...body,
-      imagem: file ? `/uploads/${file.filename}` : produtos[index].imagem,
+      ...req.body,
     };
 
     produtos[index] = produtoAtualizado;
@@ -171,7 +177,78 @@ const getDespesasTotais = (req, res) => {
     res.status(500).json({ message: "Erro ao obter despesas totais.", error });
   }
 };
+const updateProdutoVenda = (req, res) => {
+  try {
+    const produtos = readData(produtosFilePath);
+    const produtoId = parseInt(req.params.id, 10);
+    const { valorVenda } = req.body;
 
+    if (!valorVenda || parseFloat(valorVenda) <= 0) {
+      return res
+        .status(400)
+        .json({ message: "O valor de venda deve ser maior que zero." });
+    }
+
+    const produto = produtos.find((p) => p.id === produtoId);
+
+    if (!produto) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    produto.valorVenda = parseFloat(valorVenda);
+    writeData(produtosFilePath, produtos);
+
+    res.status(200).json({
+      message: "Valor de venda atualizado com sucesso.",
+      produtoAtualizado: produto,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Erro ao atualizar valor de venda.", error });
+  }
+};
+const renovarEstoque = (req, res) => {
+  try {
+    const produtos = readData(produtosFilePath);
+    const despesas = readData(despesasFilePath);
+
+    const produtoId = parseInt(req.params.id, 10);
+    const { quantidadeAdicional } = req.body;
+
+    if (!quantidadeAdicional || parseInt(quantidadeAdicional, 10) <= 0) {
+      return res.status(400).json({
+        message: "A quantidade adicional deve ser um número maior que zero.",
+      });
+    }
+
+    const produto = produtos.find((p) => p.id === produtoId);
+
+    if (!produto) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    const quantidadeNova = parseInt(quantidadeAdicional, 10);
+    const valorCompra = produto.valorCompra * quantidadeNova;
+
+    produto.quantidadeEmEstoque += quantidadeNova;
+
+    const novaDespesa = {
+      valor: valorCompra,
+      descricao: `Compra adicional de ${quantidadeNova} unidade(s) de ${produto.nome}`,
+      data: new Date().toISOString(),
+    };
+
+    despesas.push(novaDespesa);
+
+    writeData(produtosFilePath, produtos);
+    writeData(despesasFilePath, despesas);
+
+    res.status(200).json({ produtoAtualizado: produto, novaDespesa });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao renovar estoque.", error });
+  }
+};
 module.exports = {
   getAllProdutos,
   getProdutoById,
@@ -180,4 +257,6 @@ module.exports = {
   deleteProduto,
   getLowStockProdutos,
   getDespesasTotais,
+  renovarEstoque,
+  updateProdutoVenda,
 };

@@ -61,5 +61,19 @@
     "quantidade": "1",
     "dataHoraCompra": "2025-01-10T13:19:02.888Z",
     "valorTotal": "690.99"
+  },
+  {
+    "id": 10,
+    "produtoId": 4,
+    "quantidade": "2",
+    "dataHoraCompra": "2025-01-10T22:49:49.091Z",
+    "valorTotal": "100.00"
+  },
+  {
+    "id": 11,
+    "produtoId": 2,
+    "quantidade": "1",
+    "dataHoraCompra": "2025-01-10T22:49:49.091Z",
+    "valorTotal": "690.99"
   }
 ]
